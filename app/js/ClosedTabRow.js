@@ -4,6 +4,7 @@ import LazyImage from './LazyImage';
 import React from 'react';
 import timeago from 'timeago.js';
 import truncateString from './truncateString';
+// import settings from './js/settings';
 
 export default class ClosedTabRow extends React.PureComponent {
   props: {
@@ -37,7 +38,7 @@ export default class ClosedTabRow extends React.PureComponent {
   render() {
     const {isSelected, tab} = this.props;
     const timeagoInstance = timeago();
-
+    console.log(tab);
     return (
       <tr className={isSelected ? 'bg-warning' : null}>
         <td onClick={this._handleClickTd} style={{width: '1px'}}>
@@ -64,7 +65,7 @@ export default class ClosedTabRow extends React.PureComponent {
         </td>
         <td>
           <a target="_blank" href={tab.url} onClick={this._handleClickAnchor}>
-            {truncateString(tab.title, 70)}
+            {truncateString(tab.title, 70)}{truncateString(tab.url, 70)}
           </a>
         </td>
         {/* $FlowFixMe: `closedAt` is an expando property added by Tab Wrangler to chrome$Tab */}
