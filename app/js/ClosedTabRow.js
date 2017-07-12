@@ -4,7 +4,7 @@ import LazyImage from './LazyImage';
 import React from 'react';
 import timeago from 'timeago.js';
 import truncateString from './truncateString';
-// import settings from './js/settings';
+import settings from './settings';
 
 export default class ClosedTabRow extends React.PureComponent {
   props: {
@@ -38,7 +38,14 @@ export default class ClosedTabRow extends React.PureComponent {
   render() {
     const {isSelected, tab} = this.props;
     const timeagoInstance = timeago();
-    console.log(tab);
+    let x = '';
+    if(settings.get('showCorralUrl') === true){
+      x = <p style={{fontSize: 10+'px', margin: 0, fontWeight: 400}}>
+          {truncateString(tab.url, 70)}</p>;
+    }else{
+      x = <p style={{fontSize: 10+'px', margin: 0, fontWeight: 400}}>
+          {truncateString(tab.url, 70)}</p>;
+    }
     return (
       <tr className={isSelected ? 'bg-warning' : null}>
         <td onClick={this._handleClickTd} style={{width: '1px'}}>
@@ -64,8 +71,10 @@ export default class ClosedTabRow extends React.PureComponent {
           }
         </td>
         <td>
-          <a target="_blank" href={tab.url} onClick={this._handleClickAnchor}>
-            {truncateString(tab.title, 70)}{truncateString(tab.url, 70)}
+          <a target="_blank" href={tab.url}
+             style={{width:500+'px', display:'block', fontWeight: 900}}
+             onClick={this._handleClickAnchor}>
+            {truncateString(tab.title, 70)}{x}
           </a>
         </td>
         {/* $FlowFixMe: `closedAt` is an expando property added by Tab Wrangler to chrome$Tab */}

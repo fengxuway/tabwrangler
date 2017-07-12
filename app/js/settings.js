@@ -17,6 +17,7 @@ const Settings = {
     paused: false, // If TabWrangler is paused (won't count down)
     purgeClosedTabs: false, // Save closed tabs in between browser sessions.
     showBadgeCount: true, // Save closed tabs in between browser sessions.
+    showCorralUrl: false,
     whitelist: ['chrome://'], // An array of patterns to check against.  If a URL matches a pattern, it is never locked.
   },
 
@@ -131,6 +132,15 @@ const Settings = {
       chrome.browserAction.setBadgeText({text: ''});
     }
     Settings.setValue('showBadgeCount', value);
+    tabmanager.updateClosedCount();
+  },
+
+  setshowCorralUrl(value: boolean) {
+    if (value === false) {
+      // Clear out the current badge setting
+      chrome.browserAction.setBadgeText({text: ''});
+    }
+    Settings.setValue('showCorralUrl', value);
     tabmanager.updateClosedCount();
   },
 

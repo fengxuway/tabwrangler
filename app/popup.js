@@ -286,7 +286,6 @@ class OptionsTab extends React.Component {
     if (this._saveAlertTimeout != null) {
       window.clearTimeout(this._saveAlertTimeout);
     }
-
     try {
       settings.set(key, value);
       this.setState({
@@ -481,6 +480,18 @@ class OptionsTab extends React.Component {
                 type="checkbox"
               />
               Show # of closed tabs in url bar
+            </label>
+          </div>
+          <div className="checkbox">
+            <label>
+              <input
+                  defaultChecked={settings.get('showCorralUrl')}
+                  id="showCorralUrl"
+                  name="showCorralUrl"
+                  onChange={this.handleSettingsChange}
+                  type="checkbox"
+              />
+              Show Url of closed tabs in url bar
             </label>
           </div>
         </form>
