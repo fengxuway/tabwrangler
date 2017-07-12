@@ -73,3 +73,4 @@ tabs that you wanted to save.
 * Modernized by [ssorallen](https://github.com/ssorallen) in 2017.
 * Rewritten by [JacobSingh](https://github.com/jacobSingh) in 2012.
 * Original extension and idea by [jacktasia](https://github.com/jacktasia) in 2010.
+
